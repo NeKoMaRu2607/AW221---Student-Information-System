@@ -1,0 +1,290 @@
+/* Google Fonts - Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+GB+S:ital,wght@0,100..400;1,100..400&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background: radial-gradient(circle, rgba(242, 236, 182,1) 0%, rgba(169, 111, 68,1) 100%);
+}
+
+.container {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 80px;
+    margin-bottom: 80px;
+    column-gap: 30px;
+}
+
+.form {
+    position: absolute;
+    max-width: 430px;
+    width: 100%;
+    padding: 30px;
+    border-radius: 6px;
+    background: #fff;
+}
+
+.form.login {
+    display: block;
+}
+
+header {
+    font-size: 28px;
+    font-weight: 600;
+    color: #232836;
+    text-align: center;
+    margin-top: -45px;
+}
+
+.form.signup {
+    display: none;
+}
+
+.form.forgot {
+    display: none;
+}
+
+.form.signup .header-container {
+    margin: 5px 0;
+}
+
+.home-btn {
+    font-size: 2.5rem;
+    color: rgb(130, 106, 251);
+    cursor: pointer;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.home-btn:hover {
+    color: rgb(88, 56, 250);
+}
+
+form {
+    margin-top: 30px;
+}
+
+.form .field {
+    position: relative;
+    height: 50px;
+    width: 100%;
+    margin-top: 40px;
+    border-radius: 6px;
+}
+
+#small-text {
+    font-size: 11.5px;
+    margin: 5px 0 5px;
+}
+
+.space {
+    height: 25px;
+}
+
+.space2 {
+    height: 45px;
+}
+
+.space3 {
+    height: 25px;
+}
+
+form .option {
+    height: 50px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.select-box select {
+    height: 50px;
+    width: 100%;
+    outline: none;
+    border: 1px solid #cacaca;
+    border-radius: 6px;
+    color: #707070;
+    font-size: 1rem;
+}
+
+.field input, .field button {
+    height: 100%;
+    width: 100%;
+    border: none;
+    font-size: 16px;
+    font-weight: 400;
+    border-radius: 6px;
+}
+
+form .field label {
+    display: block;
+    margin-bottom: 10px;
+    color: #333;
+    font-weight: 500;
+}
+
+.field input {
+    outline: none;
+    padding: 0 42px;
+    border: 1px solid #cacaca;
+}
+
+.field input:focus {
+    border-bottom-width: 2px;
+}
+
+.user-icon {
+    position: absolute;
+    top: 117%;
+    left: 10px;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: #8b8b8b;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.key-icon {
+    position: absolute;
+    top: 117%;
+    left: 10px;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: #8b8b8b;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.eye-icon {
+    position: absolute;
+    top: 120%;
+    right: 10px;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: #8b8b8b;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.field button {
+    color: #fff;
+    background-color: #0171d3;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.field button a {
+    color: #fff;
+}
+
+.field button:hover {
+    background-color: #016dcb;
+}
+
+
+.form-link {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.form-link span, .form-link a {
+    font-size: 14px;
+    font-weight: 400;
+    color: #232836;
+}
+
+.form a {
+    color: #0171d3;
+    text-decoration: none;
+}
+
+.form-content a:hover {
+    text-decoration: underline;
+}
+
+.line {
+    position: relative;
+    height: 1px;
+    width: 100%;
+    margin: 36px 0;
+    background-color: #d4d4d4;
+}
+
+.line::before {
+    content: 'Or';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    color: #8b8b8b;
+    padding: 0 15px;
+}
+
+.media-options a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+a.facebook {
+    color: #fff;
+    background-color: #4267b2;
+}
+
+a.facebook .facebook-icon {
+    height: 28px;
+    width: 28px;
+    color: #0171d3;
+    font-size: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff !important; 
+}
+
+.facebook-icon {
+    position: absolute;
+    top: 20%;
+    left: 30px;
+    transform: translate(-50%);
+}
+
+img.google-img {
+    position: absolute;
+    top: 20%;
+    left: 29px;
+    transform: translate(-50%);
+}
+
+img.google-img {
+    height: 30px;
+    width: 30px;
+    object-fit: cover;
+}
+
+a.google {
+    border: 1px solid #cacaca;
+}
+
+a.google span {
+    font-weight: 500;
+    opacity: 0.6;
+    color: #232836;
+}
+
+
+/* Responsive */
+@media screen and (max-width: 400px){
+    .form {
+        padding: 15px 10px;
+    }
+}

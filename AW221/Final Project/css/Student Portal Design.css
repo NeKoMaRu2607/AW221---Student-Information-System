@@ -1,0 +1,834 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    font-family: 'Poppins', sans-serif;
+}
+
+html {
+    font-size: 80%;
+    overflow-x: hidden;
+}
+
+body {
+    background-color: rgb(240,216,195);
+}
+
+body.active {
+    overflow: hidden;
+}
+
+.btn, .option-btn, .delete-btn,
+.inline-btn, .inline-option-btn, .inline-delete-btn {
+    border-radius: .5rem;
+    padding: 1rem 3rem;
+    font-size: 1.2rem;
+    color: #fff;
+    margin-top: 1.5rem ;
+    text-decoration: none;
+    text-transform: capitalize;
+    cursor: pointer;
+    text-align: center;
+}
+
+.btn, .option-btn, .delete-btn {
+    display: block;
+    width: 100%;
+}
+
+.inline-btn, .inline-option-btn, .inline-delete-btn {
+    display: inline-block;
+}
+
+.btn, .inline-btn {
+    background-color: rgb(170, 50, 49);
+}
+.option-btn, .inline-option-btn {
+    background-color: #cacaca;
+}
+
+.delete-btn, .inline-delete-btn {
+    background-color: bisque;
+}
+
+.btn:hover, .option-btn:hover, .delete-btn:hover,
+.inline-btn:hover, .inline-option-btn:hover, .inline-delete-btn:hover {
+    background-color: rgb(103, 24, 30);
+}
+
+.heading {
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(0,0,0,0.4);
+    font-size: 2.5rem;
+    text-transform: capitalize;
+    margin: 0.8rem 1.5rem 2rem;
+}
+
+.header {
+    padding: 1rem 2rem;
+    background-color: #fff;
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+}
+
+.header .flex {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header .flex img {
+    width: 200px;
+    height: 55px;
+}
+
+.header .flex .content {
+    display: flex;
+    align-items: center;
+}
+
+.header .flex .content ul {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.header .flex .content ul li a {
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 1.4rem;
+    letter-spacing: 0.2em;
+    color: #333;
+    padding: 0.5rem 0;
+    position: relative;
+    transition: color 0.3s;
+}
+
+.header .flex .content ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: black;
+    transition: width 0.3s ease-in-out;
+}
+
+.header .flex .content ul li a:hover::after {
+    width: 100%;
+}
+
+
+.header .flex .icons i {
+    font-size: 24px;
+    border-radius: 35%;
+    height: 3.5rem;
+    width: 3.5rem;
+    cursor: pointer;
+    line-height: 3.4rem;
+    background-color: rgb(235, 226, 219);
+    text-align: center;
+    margin-left: 8px;
+}
+
+.header .flex .icons i:hover {
+    background-color: rgb(239, 217, 193);
+}
+
+.header .flex .profile {
+    position: absolute;
+    top: 120%; right: 2rem;
+    background-color: antiquewhite;
+    border-radius: 8px;
+    padding: 2rem;
+    text-align: center;
+    width: 20rem;
+    transform: scale(0);
+    transform-origin: top right;
+    transition: .25s linear;
+}
+
+.header .flex .profile.active {
+    transform: scale(1);
+}
+
+.header .flex .profile img {
+    width: 10rem;
+    height: 10rem;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: .5rem;
+}
+
+.header .flex .profile h3 {
+    font-size: 1.5rem;
+}
+
+.header .flex .profile span {
+    font-size: 1.3rem;
+}
+
+.side-bar {
+    position: fixed;
+    top: 0; left: -18rem;
+    background-color: rgb(235, 226, 219);
+    width: 18rem;
+    height: 100vh;
+    transition: left 0.6s ease;
+    z-index: 1000;
+}
+
+.side-bar.active {
+    left: 0;
+}
+
+.side-bar .close-side-bar {
+    text-align: right;
+    padding-right: 10px;
+    padding-bottom: 0;
+    display: none;
+}
+
+.side-bar .close-side-bar i {
+    height: .5rem;
+    width: 4.5rem;
+    line-height: 4.4rem;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.side-bar .close-side-bar i:hover {
+    color: red;
+}
+
+.side-bar .profile-section {
+    padding: 1.5rem 2rem;
+    text-align: center;
+}
+
+.side-bar .profile-section h1 {
+    margin: 1rem;
+}
+
+.side-bar .profile-section img {
+    width: 10rem;
+    height: 10rem;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 0.5rem;
+    cursor: pointer;
+}
+
+.side-bar .profile-section img:hover {
+    box-shadow: 0 5px 30px -7px rgba(0,0,0,0.4);
+    animation: float infinite 1.2s;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-1.5px);
+    }
+}
+
+.side-bar .profile-section h2 {
+    font-size: 1.6rem;
+}
+
+.side-bar .profile-section span {
+    font-size: 1.1rem;
+}
+
+.side-bar .navbar a {
+    display: block;
+    padding: .5rem;
+    margin: .5rem 0;
+    font-size: 1.1rem;
+    text-decoration: none;
+    color: #000;
+}
+
+.side-bar .navbar a i {
+    transition: .5s linear;
+}
+
+.side-bar .navbar a:hover {
+    background-color: rgb(239, 217, 193);
+}
+
+.side-bar .navbar a:hover i {
+    margin-right: .8rem;
+}
+
+.side-bar .navbar a span {
+    margin: 0 20px;
+}
+
+.quick-select .heading-1 {
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(0,0,0,0.4);
+    font-size: 2.5rem;
+    text-transform: capitalize;
+    margin: 8rem 1.5rem 2rem;
+}
+
+.quick-select .box-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(27.5rem, 1fr));
+    gap: 1.5rem;
+    align-items: flex-start;
+    justify-content: center;
+    margin: 0 1.5rem 2rem;
+}
+
+.quick-select .box-container .box {
+    border-radius: .5rem;
+    background-color: #d3c9c0;
+    padding: 2rem;
+    text-align: center;
+    justify-content: center;
+}
+
+.quick-select .box-container .box .title {
+    font-size: 2rem;
+    color: #000;
+}
+
+.quick-select .box-container .box p {
+    line-height: 1.5;
+    padding-top: 1.5rem;
+    color: #8c8c8c;
+    font-size: 1.2rem;
+}
+
+.quick-select .box-container .box .flex {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding-top: 1.5rem;
+}
+
+.quick-select .box-container .box .flex a {
+    padding: 0.2rem 1.5rem;
+    border-radius: .5rem;
+    font-size: 1rem;
+    background-color: #aa3231;
+    text-decoration: none;
+}
+
+.quick-select .box-container .box .flex a i {
+    margin-right: 1rem;
+    color: #fff;
+}
+
+.quick-select .box-container .box .flex a span {
+    color: #fff;
+}
+
+.quick-select .box-container .box .flex a:hover {
+    background-color: #680a0a;
+}
+
+/* Optional */
+/*.quick-select .box-container .box .flex a:hover i {
+    color: #000;
+}*/
+
+/*.quick-select .box-container .box .flex a:hover span {
+    color: #000;
+}*/
+
+.student-profile .button-container,
+.intake-results .btn-container {
+    display: block;
+    right: 0;
+    padding: 0 10px;
+}
+
+.student-profile .button-container,
+.intake-results .btn-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 1rem;
+}
+
+.student-profile .button-container .class-btn,
+.intake-results .btn-container .class-btn {
+    padding: .5rem 1rem;
+    margin-left: 0.5rem;
+    border: none;
+    border-radius: 5px; 
+    background-color: #b6a89d;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.student-profile .button-container .class-btn:hover,
+.intake-results .btn-container .class-btn:hover {
+    background-color: rgb(239, 217, 193);
+}
+
+.student-profile .button-container .class-btn.active,
+.intake-results .btn-container .class-btn.active {
+    background-color: #fd8383;
+}
+
+.student-profile .box-container,
+.intake-results .box-container {
+    margin: 0 1.5rem 2rem;
+}
+
+.student-profile .box-container .box,
+.intake-results .box {
+    border-radius: .5rem;
+    background-color: #b6a89d;
+    padding: 1rem;
+}
+
+.student-profile .box-container .box h3,
+.intake-results .box-container .box h3 {
+    text-align: center;
+}
+
+.student-profile .box-container .box table,
+.intake-results .box-container .box table {
+    margin: 0 auto;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.student-profile .box-container .box table th,td,
+.intake-results .box-container .box table th, td {
+    padding: 16px 8px;
+    border-bottom: 1px solid #fff;
+}
+
+.student-profile .box-container .box table td,
+.intake-results .box-container .box table td {
+    text-align: center;
+}
+
+.student-profile .box-container .box table tr td button,
+.intake-results .box-container .box table tr td button {
+    padding: .5rem;
+    border-radius: 2px;
+    text-decoration: none;
+    background-color: #d9cdb7;
+    color: #000;
+}
+
+.student-profile .box-container .box table tr td button a,
+.intake-results .box-container .box table tr td button a {
+    text-decoration: none;
+    color: #000;
+}
+
+.student-profile .box-container .box table tr button:hover,
+.intake-results .box-container .box table tr button:hover {
+    background-color: antiquewhite;
+}
+
+.timetable p {
+    margin: 0 50px;
+}
+
+.timetable .box-container {
+    justify-content: center;
+    display: flex;
+    gap: 100px;
+    margin: 50px 55px;
+    background-color: #b6a89d;
+    border-radius: 5px;
+}
+
+.timetable .box-container .box h3, .timetable .box-container .box-right h3 {
+    text-align: center;
+    margin: 10px 0;
+}
+
+/* Courses Category */
+.courses-category .box-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 40px 20px;
+    gap: 20px;
+}
+
+.courses-category .box {
+    flex-basis: 45%;
+    margin-bottom: 20px;
+}
+
+.courses-category .tutor-1 {
+    background-color: #b6a89d;
+    text-align: center;
+    border-radius: 5px;
+    padding: 15px 20px;
+}
+
+.courses-category .tutor-1 span img {
+    padding-top: 10px;
+    width: 200px;
+    height: 100px;
+}
+
+/* Financial Statement */
+.financial-statement p {
+    text-align: center;
+    font-size: 1rem;
+    color: #555;
+}
+
+.financial-statement .box-container {
+    display: flex;
+    gap: 30px;
+    justify-items: center;
+    align-items: center;
+    margin: 30px;
+}
+
+/* Feedbacks */
+.feedbacks .box-container {
+    background-color: #b6a89d;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 20px;
+}
+
+.feedbacks .box-container h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.feedback-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.feedback-table th,
+.feedback-table td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+}
+
+.feedback-table th {
+    background-color: #d9cdb7;
+}
+
+.feedback-table tr button:hover {
+    background-color: antiquewhite;
+}
+
+.feedback-table button {
+    background-color: #d9cdb7;
+    padding: .5rem;
+    border-radius: 2px;
+    color: #000;
+    text-decoration: none;
+}
+
+/* Footer */
+.footer {
+    position: sticky;
+    bottom: 0; right: 0; left: 0;
+    border-top: 1px solid rgba(0,0,0,0.2);;
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+    padding: 1rem 2rem;
+    text-align: center;
+    font-size: 1rem;
+    margin-top: 2rem;
+    z-index: -1000;
+}
+
+/* Add Extra CSS Design 19/3/2025 */
+
+.student-container .s-box table th {
+    padding-top: 10px;
+}
+
+/* End Adding */
+
+/* Add Extra CSS Design 2/4/2025 */
+
+/* Styling for the search bar */
+.search-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+}
+
+#profilesearchInput, #resultsearchInput {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 200px;
+}
+
+#profilesearchButton, #resultsearchButton {
+    padding: 8px 12px;
+    margin-left: 8px;
+    background-color: #aa3231;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#profilesearchButton, #resultsearchButton:hover {
+    background-color: #680a0a;
+}
+
+.no-results {
+    text-align: center;
+    padding: 20px;
+    color: #777;
+}
+
+#profileresetSearch, #resultresetSearch {
+    padding: 8px 12px;
+    margin-left: -10px;
+    margin-right: 20px;
+    background-color: #aa3231;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    display: none;
+}
+
+#profileresetSearch, #resultresetSearch:hover {
+    background-color: #680a0a;
+}
+
+/* End Adding */
+
+/* Responsiveness */
+
+@media (max-width:1200px){
+
+    body {
+        padding-left: 0;
+    }
+
+    .side-bar {
+        transition: .2s linear;
+        left: -30rem;
+    }
+
+    .side-bar.active {
+        left: 0;
+        box-shadow: 0 0 0 100vw rgba(0,0,0,0.7);
+    }
+
+    .side-bar .close-side-bar {
+        display: block;
+    }
+}
+
+
+@media (max-width:991px){
+
+    html {
+        font-size: 70%;
+    }
+
+    .feedback-table a {
+        padding: 6px 12px;
+        font-size: 14px;
+        display: inline-block;
+    }
+
+    .header .flex .content {
+        display: none;
+    }
+}
+
+@media (max-width: 800px) {
+    .timetable .box-container {
+        flex-direction: column;
+        gap: 20px;
+        margin: 20px 15px;
+        padding: 15px;
+    }
+
+    .timetable .box-container .box, .timetable .box-container .box-right {
+        width: 100%;
+    }
+
+    .timetable table {
+        width: 100%;
+        font-size: 14px;
+        overflow-x: auto;
+    }
+
+    .courses-category .box {
+        flex-basis: 45%;
+    }
+
+    .courses-category .tutor-1 span img {
+        width: 200px;
+        height: 100px;
+    }
+}
+
+@media (max-width: 768px) {
+    .student-profile .box-container {
+        grid-template-columns: 1fr;
+    }
+
+    .intake-results .box-container {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    .student-profile .box-container .box table tr td a,
+    .intake-results .box-container .box table tr td a {
+        font-size: 10px;  
+        padding: 0.4rem 0.8rem;
+        background-color: #fd8383;
+        border-radius: 4px;
+    }
+
+    .student-profile .box-container .box table tr td a:hover,
+    .intake-results .box-container .box table tr td a:hover {
+        background-color: #e99c9c;  /* Lighter shade on hover */
+    }
+
+    .intake-results .box table {
+        width: 100%; /* Ensure the table uses full width */
+    }
+
+    .intake-results .box table th,
+    .intake-results .box table td {
+        padding: 8px 4px;
+        font-size: 12px;
+        word-wrap: break-word; /* Allow text to wrap */
+    }
+
+    .feedbacks .box-container {
+        padding: 15px;
+        margin: 15px;
+    }
+
+    .feedback-table th,
+    .feedback-table td {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .feedback-table th {
+        font-size: 16px;
+    }
+
+    .feedback-table button {
+        padding: 6px 12px;
+        font-size: 14px;
+        display: inline-block;
+    }
+
+    .financial-statement .box-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .timetable .box-container {
+        margin: 10px 15px;
+        gap: 10px;
+    }
+
+    .timetable p {
+        margin: 0 20px;
+        font-size: 12px;
+    }
+
+    .timetable table {
+        font-size: 12px;
+    }
+
+    .timetable .box-container .box h3, .timetable .box-container .box-right h3 {
+        font-size: 18px;
+    }
+
+    .courses-category .box {
+        flex-basis: 100%;
+    }
+
+    .courses-category .tutor-1 span img {
+        width: 200px;
+        height: 100px;
+    }
+
+    .courses-category .tutor-1 h2, 
+    .courses-category .tutor-1 p {
+        font-size: 14px;
+    }
+
+    .intake-results .box-container {
+        overflow-x: auto;
+        display: grid; /* Add grid layout for consistent structure */
+        grid-template-columns: 1fr; /* One column on smaller screens */
+    }
+
+    .intake-results .box table {
+        width: 100%; /* Ensure table uses full width */
+    }
+
+    .intake-results .box table th,
+    .intake-results .box table td {
+        padding: 8px 4px;
+        font-size: 12px; /* Adjust font size for smaller screens */
+    }
+
+    /* Optional: Add wrapping to prevent text from overflowing */
+    .intake-results .box table td {
+        word-wrap: break-word; /* Ensure long text in table cells wraps correctly */
+    }
+
+    .feedbacks .box-container {
+        padding: 10px;
+        margin: 10px;
+    }
+
+    .feedback-table {
+        width: 100%;
+        display: block;
+        overflow-x: auto;
+    }
+
+    .feedback-table th,
+    .feedback-table td {
+        padding: 8px;
+        font-size: 12px;
+    }
+
+    .feedback-table button {
+        padding: 5px 10px;
+        font-size: 12px;
+    }
+}
+
+@media (max-width:450px){
+
+    html {
+        font-size: 65%;
+    }
+
+    .heading {
+        font-size: 1.5rem;
+    }
+}
