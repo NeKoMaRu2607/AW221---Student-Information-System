@@ -667,7 +667,7 @@ img {
     background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
         url(Images/banner2.jpg);
     background-position: center;
-    background-color: cover;
+    background-size: cover;
     text-align: center;
     padding: 100px 0;
 }
