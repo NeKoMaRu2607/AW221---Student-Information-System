@@ -6,13 +6,18 @@ A web-based Student Information System (SIS) designed for Pinnacle Academy. The 
 **Features**
 --------------------------------------------------------
 • Multi-role views: Admin, Teacher, Student, Alumni
-• User registration system with structured UI
-• Organized and reusable CSS architecture
-• Mobile-friendly layout with responsive design
+• User registration and authencation
+• Organized, reusable CSS architecture and responsive layout
+• Basic client-side interactivity using JavaScript
 
 **Skills Demonstrated**
 ---------------------------------------------------------
-System design and multi-role user management
-HTML5, CSS3, and JavaScript for dynamic functionality
-UI/UX consistency across multiple views
-Real-world simulation of an academic management portal
+• System design and multi-role user management
+• HTML5, CSS3, and JavaScript for dynamic functionality
+• PHP for student database
+• MySQL (database) — development via phpMyAdmin
+
+## Project Status
+This project was developed within a two-week timeline and demonstrates the **core features** of a Student Information System (multi-role portals, registration, profiles, and results).  
+
+Some advanced features such as full automation of student data and extended real-world integrations are **not yet implemented**, but are planned for future iterations.
