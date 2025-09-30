@@ -19,7 +19,7 @@ A web-based Student Information System (SIS) designed for Pinnacle Academy. The 
 
 • HTML5, CSS3, and JavaScript for dynamic functionality
 
-• PHP for student database
+• PHP for server logic
 
 • MySQL (database) — development via phpMyAdmin
 
