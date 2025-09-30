@@ -1,5 +1,6 @@
 # AW221---Student-Information-System
 Pinnacle Academy Student Information System (SIS)
+
 A web-based Student Information System (SIS) designed for Pinnacle Academy. The system provides dedicated portals for different user roles, including Admin, Teacher, Student, and Alumni. It supports user registration, student profiles, and result viewing, offering a simplified experience for managing academic information.
 
 **Features**
