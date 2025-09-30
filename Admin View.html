@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="css/Student Portal Design.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+    <script defer src="js/Admin View.js"></script>
+    <title>School Information System - Admin</title>
+</head>
+
+<body id="top">
+    <!--Header-->
+    <section class="header">
+        <div class="flex">
+            <a href="index.html" class="logo"><img src="Images/Logo-s.png"></a>
+
+            <div class="content">
+                <ul>
+                    <li><a href="Student Registration Page.html">Student Registration</a></li>
+                </ul>
+            </div>
+
+            <div class="icons">
+                <i id="menu-btn" class='bx bx-menu'></i>
+                <i id="user-btn" class='bx bx-user'></i>
+                <i id="toggle-btn" class='bx bx-sun'></i>
+            </div>
+
+            <div class="profile">
+                <img src="Images/Logo-only.png">
+                <h3>Pinnacle Academy</h3>
+                <span>Admin</span>
+                <a href="index.html" class="btn">Logout</a>
+            </div>
+        </div>
+    </section>
+
+    <!--Sidebar-->
+    <section class="side-bar">
+        <div class="close-side-bar">
+            <i class='bx bx-x'></i>
+        </div>
+
+        <div class="profile-section">
+            <h1>Welcome Back,</h1>
+            <img src="Images/Logo-only.png">
+            <h2>Pinnacle Academy</h2>
+            <span>Admin</span>
+        </div>
+
+        <nav class="navbar">
+            <a href="#top"><i class='bx bxs-dashboard'></i><span>Dashboard Overview</span></a>
+            <a href="#student-profile"><i class='bx bxs-user'></i><span>Student Profile</span></a>
+            <a href="#timetable"><i class='bx bxs-calendar'></i><span>Timetable</span></a>
+            <a href="#courses-category"><i class='bx bxs-graduation'></i><span>Courses</span></a>
+            <a href="#intake-results"><i class='bx bxs-report'></i><span>Results</span></a>
+            <a href="#financial-statement"><i class='bx bx-line-chart'></i><span>Financial Statement</span></a>
+            <a href="#feedbacks"><i class='bx bxs-spreadsheet'></i><span>Feedback</span></a>
+            <hr style="border: 1px solid #f8f8f8;">
+            <h2 style="margin: 5px 10px;">Registration</h2>
+            <a href="Student Registration Page.html"><i class='bx bxs-user-rectangle'></i><span>Student
+                    Registration</span></a>
+        </nav>
+    </section>
+
+    <!--Quick Select Section-->
+    <section class="quick-select">
+
+        <h1 class="heading-1">Quick Options</h1>
+
+        <div class="box-container">
+            <div class="box">
+                <h3 class="title">Timetable</h3>
+                <p>Student/Lecturer Timetable</p>
+                <a href="#timetable" class="inline-btn">View Timetable</a>
+            </div>
+
+            <div class="box">
+                <h3 class="title">Intakes Result</h3>
+                <p>All Intake Results</p>
+                <a href="#intake-results" class="inline-btn">View Result</a>
+            </div>
+
+            <div class="box">
+                <h3 class="title">Financial Statement</h3>
+                <p>Academy Financial</p>
+                <a href="#financial-statement" class="inline-btn">View Statement</a>
+            </div>
+
+            <div class="box">
+                <h3 class="title">Feedback</h3>
+                <p>Comments & Complains</p>
+                <a href="#feedbacks" class="inline-btn">View Feedbacks</a>
+            </div>
+        </div>
+    </section>
+
+    <!--Student Profile-->
+    <section class="student-profile" id="student-profile">
+
+        <h1 class="heading">Student Profile</h1>
+
+        <div class="search-container">
+            <input type="text" id="profilesearchInput" placeholder="Enter Student ID">
+            <button id="profilesearchButton"style="margin-right: 20px;">Search</button>
+            <button id="profileresetSearch"style="">Reset</button>
+        </div>
+
+        <div class="box-container">
+            <div class="box class-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Age</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="profileTableBody">
+                        <!-- Data will be loaded with JavaScript -->
+                    </tbody>
+                </table>
+                <div id="profilenoResults" class="no-results" style="display: none;">
+                    No student found with the specified ID
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--Timetables-->
+    <section class="timetable" id="timetable">
+
+        <h1 class="heading">Timetables</h1>
+        <p>* Timetable will temporary be updated weekly</p>
+
+        <div class="box-container">
+            <div class="box">
+                <h3>Add Timetable</h3>
+            </div>
+            <!--Day + Time + Subject + Timetable Type + Lecturer -->
+            <legend>
+                <form action="#">
+                    <label for="day">Day :</label>
+                    <input type="text" name="day" id="day">
+                    <label for="time">Time :</label>
+                    <input type="text" name="time" id="time">
+                    <label for="subject">Subject :</label>
+                    <input type="text" name="subject" id="subject">
+                    <label for="timetableType">Timetable Type :</label>
+                    <input type="text" name="timetableType" id="timetableType">
+                    <label for="lecturer">Lecturer :</label>
+                    <input type="text" name="lecturer" id="lecturer">
+                </form>
+            </legend>
+        </div>
+
+        <div class="box-container">
+
+            <div class="box">
+                <h3>Student Timetable</h3>
+                <table>
+                    <tr>
+                        <td>D/T</td>
+                        <td>Morning : 8 AM-12 PM</td>
+                        <td>Afternoon : 12 PM-5 PM</td>
+                        <td>Evening : 5 PM-9 PM</td>
+                    </tr>
+                    <tr>
+                        <td>Sunday</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>Monday</td>
+                        <td>English</td>
+                        <td>Maths</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>Tuesday</td>
+                        <td>NA-T01</td>
+                        <td>CS-T01</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>Wednesday</td>
+                        <td>IT-P01</td>
+                        <td>CS-P01</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>Thursday</td>
+                        <td>-</td>
+                        <td>Add Maths</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>Friday</td>
+                        <td>Soft Skills</td>
+                        <td>-</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>Saturday</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                    </tr>
+                </table>
+
+            </div>
+
+            <div class="box-right">
+                <h3>Lecturer Timetable</h3>
+                <table>
+                    <tr>
+                        <td>D/T</td>
+                        <td>Morning : 8 AM-12 PM</td>
+                        <td>Afternoon : 12 PM-5 PM</td>
+                        <td>Evening : 5 PM-9 PM</td>
+                    </tr>
+                    <tr>
+                        <td>Sunday</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>Monday</td>
+                        <td>Mr Xavier</td>
+                        <td>Ms Priya</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>Tuesday</td>
+                        <td>Mr Johnson</td>
+                        <td>Mr Karthi</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>Wednesday</td>
+                        <td>Ms Priya</td>
+                        <td>Mr Karthi</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>Thursday</td>
+                        <td>-</td>
+                        <td>Ms Priya</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>Friday</td>
+                        <td>Mr Will</td>
+                        <td>-</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>Saturday</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Table -->
+    <section class="intake-results" id="intake-results">
+        <h1 class="heading">Intake Results</h1>
+    
+        <div class="search-container">
+            <input type="text" id="resultsearchInput" placeholder="Enter Student ID">
+            <button id="resultsearchButton" style="margin-right: 20px;">Search</button>
+            <button id="resultresetSearch" style="display: none;">Reset</button>
+        </div>
+    
+        <div class="box-container">
+            <div class="box class-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Student ID</th>
+                            <th>Course</th>
+                            <th>GPA</th>
+                            <th>Intake Year</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="resultTableBody">
+                        <!-- Data will be loaded with JavaScript -->
+                    </tbody>
+                </table>
+                <div id="resultnoResults" class="no-results" style="display: none;">
+                    No student found with the specified ID
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--Financial Statement-->
+    <section class="financial-statement" id="financial-statement">
+
+        <h1 class="heading">Financial Statement</h1>
+        <p>* Financial Statement will be updated Monthly</p>
+
+        <div class="box-container">
+
+            <div class="box chart-box">
+                <div id="yearlyChart" style="width:600px; height:500px;"></div>
+            </div>
+
+            <div class="box chart-box">
+                <div id="intakeChart" style="width:600px; height:500px;"></div>
+            </div>
+
+            <!--<div class="box chart-box">
+                <div id="expensesChart" style="width:600px; height:500px;"></div>
+            </div>
+
+            <div class="box chart-box">
+                <div id="scholarshipChart" style="width:600px; height:500px;"></div>
+            </div>-->
+        </div>
+    </section>
+
+    <!--Feedbacks-->
+    <section class="feedbacks" id="feedbacks">
+
+        <h1 class="heading">Feedbacks</h1>
+
+        <div class="box-container">
+
+            <table class="feedback-table">
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Feedback</th>
+                    <th>Date Submitted</th>
+                    <th>Actions</th>
+                </tr>
+                <tr>
+                    <td>Ariel Robbins</td>
+                    <td>arielrobbins.16@gmail.com</td>
+                    <td>The academy has excellent facilities and supportive staff.</td>
+                    <td>2024-01-20</td>
+                    <td><button>View Details</button></td>
+                </tr>
+                <tr>
+                    <td>Nathan Daugherty</td>
+                    <td>nathan.daugherty@gmail.com</td>
+                    <td>I appreciate the various courses offered.</td>
+                    <td>2024-02-14</td>
+                    <td><button>View Details</button></td>
+                </tr>
+                <tr>
+                    <td>Weirong Ip</td>
+                    <td>i_wr8966@gmail.com</td>
+                    <td>The distance between the academy in Selangor and stores to get essential items is far, it's also
+                        dangerous to walk alone.</td>
+                    <td>2024-05-28</td>
+                    <td><button>View Details</button></td>
+                </tr>
+            </table>
+        </div>
+    </section>
+
+    <!--Footer-->
+    <footer class="footer">
+        Copyright &copy; 2024 - Pinnacle Academy | All Rights Reserved.
+    </footer>
+</body>
+
+</html>
