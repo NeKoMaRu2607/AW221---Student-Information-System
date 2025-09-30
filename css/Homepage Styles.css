@@ -1,0 +1,813 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    position: relative;
+    min-height: 100vh;
+    overflow-x: hidden;
+    background-color: white;
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 25%;
+    background: url('Images/background.jpg') no-repeat center top;
+    background-size: cover;
+    opacity: 0.1;
+    z-index: -1;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background: #fff;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 15px 15px rgba(0, 0, 0, 0.05);
+    z-index: 1000;
+}
+
+.logo {
+    top: 0;
+    left: 0;
+    width: 230px;
+    height: 150px;
+}
+
+.group {
+    display: flex;
+    align-items: center;
+}
+
+header ul {
+    display: flex;
+    gap: 30px;
+}
+
+header ul li {
+    list-style: none;
+    position: relative;
+}
+
+header ul li a {
+    text-decoration: none;
+    font-size: 1em;
+    color: #333;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+}
+
+header ul li a::before {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    width: 100%;
+    height: 2px;
+    background: #333;
+    transform: scaleX(0);
+    transition: transform 0.3s ease-in-out;
+    transform-origin: right;
+}
+
+header ul li a:hover::before {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+header ul li ul li a::before {
+    display: none;
+}
+
+header ul li ul li a:hover {
+    background-color: #e3e3e3;
+    color: #333;
+    padding-left: 5px;
+    transition: all 0.2s ease-in-out;
+}
+
+/* Dropdown styling */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 110%;
+    left: 0;
+    background-color: white;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    list-style: none;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown-menu li a {
+    padding: 10px 20px;
+    color: #333;
+    text-transform: none;
+    letter-spacing: normal;
+    display: block;
+}
+
+.menuToggle {
+    display: none;
+}
+
+.login {
+    margin-left: 10px;
+}
+
+.person-icon {
+    font-size: 1.8em;
+    color: black;
+    padding-left: 10px;
+}
+
+/* Sidebar styles */
+.sidebar {
+    position: fixed;
+    top: 80px;
+    right: -300px;
+    width: 300px;
+    height: calc(100% - 80px);
+    background: white;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+    transition: right 0.3s ease;
+    padding: 20px;
+    z-index: 999;
+}
+
+.closeBtn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 38px;
+    cursor: pointer;
+    color: #333;
+    z-index: 1001;
+}
+
+.sidebar.open {
+    right: 0;
+}
+
+.sidebar ul {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 35px;
+}
+
+.sidebar ul li {
+    list-style: none;
+}
+
+.sidebar ul li a {
+    position: relative;
+    text-decoration: none;
+    color: #333;
+    font-size: 1.2em;
+    padding: 10px 20px;
+}
+
+.sidebar ul li a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    height: 2px;
+    width: 0;
+    background: #333;
+    transition: width 0.3s;
+}
+
+/* Expand line width on hover */
+.sidebar ul li a:hover::after {
+    width: 100%;
+}
+
+.sidebar .dropdown-menu {
+    display: none;
+    position: relative;
+    top: 0;
+}
+
+.sidebar .dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.sidebar .dropdown-menu li a {
+    padding: 10px 20px;
+    color: #333;
+    display: block;
+}
+
+/* Gray background on hover for dropdown items */
+.sidebar .dropdown-menu li a:hover {
+    background-color: #e3e3e3;
+    color: #333;
+    transition: background-color 0.2s ease-in-out;
+}
+
+/* Card Slider */
+.course-col h3 {
+    font-size: 32px;
+}
+
+.course-col p {
+    font-size: 16px;
+}
+
+.card-slider {
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    /* Adjust width as needed */
+}
+
+.card-container {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    white-space: nowrap;
+    /* Prevent cards from wrapping */
+    overflow: visible;
+}
+
+.card {
+    width: 300px;
+    height: 250px;
+    margin: 10px;
+    padding: 20px;
+    background-color: rgb(239, 217, 193);
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.card_deco {
+    text-decoration: none;
+    color: #000;
+}
+
+.card img {
+    width: 200px;
+    height: 100px;
+    border-radius: 5%;
+}
+
+.card h3 {
+    margin-top: 20px;
+    font-size: 28px;
+}
+
+.prev,
+.next {
+    background-color: rgb(255, 255, 255);
+    color: black;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 20px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.prev:hover,
+.next:hover {
+    background-color: rgb(230, 221, 214);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.prev {
+    left: 0;
+}
+
+.next {
+    right: 0;
+}
+
+/* Optional: Hover effect */
+.card:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s;
+}
+
+.text-box {
+    padding-top: 180px;
+    width: 50%;
+    position: relative;
+    margin: 50px auto;
+    text-align: center;
+    padding-bottom: 30px;
+}
+
+.text-box h1 {
+    font-size: 40px;
+}
+
+.text-box p {
+    margin: 10px 0 40px;
+    font-size: 16px;
+}
+
+.hero-btn {
+    display: inline-block;
+    text-decoration: none;
+    color: #000;
+    border: 1px solid #000;
+    padding: 12px 34px;
+    font-size: 13px;
+    background: transparent;
+    position: relative;
+    cursor: pointer;
+}
+
+.hero-btn:hover {
+    border: 1px solid #000;
+    background-color: #000;
+    color: #fff;
+    transition: 0.8s;
+}
+
+/* Courses */
+.course {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    padding-top: 100px;
+}
+
+.course .outerP {
+    color: #777;
+    font-weight: 300;
+    font-size: 20px;
+    padding: 10px;
+}
+
+.course h1 {
+    font-size: 36px;
+    font-weight: 600;
+}
+
+.course .course-text {
+    margin: 20px 10px;
+    font-size: 16px;
+    line-height: 2;
+}
+
+/* Slider */
+.slideshow-container {
+    margin-top: 100px;
+    max-width: 800px;
+    position: relative;
+    margin: auto;
+}
+
+.mySlides {
+    display: none;
+}
+
+.mySlides img {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    margin-top: 100px;
+}
+
+img {
+    vertical-align: middle;
+}
+
+.slider-text {
+    background-color: #fff;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    color: #000;
+    font-size: 1.5em;
+    padding: 8px 12px;
+    position: absolute;
+    bottom: 8px;
+    width: 100%;
+    text-align: center;
+}
+
+.dot {
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+.active {
+    background-color: #8e1131;
+    color: #fff;
+}
+
+@keyframes fade {
+    from {
+        opacity: .4
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+/* Middle Boxes */
+.middlerow {
+    margin-top: 5%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.middlerow .course-col {
+    flex-basis: 31%;
+    background: rgb(170, 50, 49);
+    color: #fff;
+    border-radius: 10px;
+    margin-bottom: 5%;
+    padding: 20px 12px;
+    box-sizing: border-box;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.course-col col h3 {
+    font-size: 32px;
+}
+
+.course-col col p {
+    font-size: 16px;
+}
+
+/* Campus */
+
+.campus {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    padding-top: 150px;
+}
+
+.campus h1 {
+    font-size: 44px;
+    font-weight: 500;
+}
+
+.campus p {
+    font-size: 20px;
+    padding: 30px 0 50px;
+}
+
+.campus-col {
+    flex-basis: 32%;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    position: relative;
+    overflow: hidden;
+}
+
+.campus-col img {
+    width: 100%;
+    display: block;
+}
+
+.layer {
+    background: rgba(211, 189, 150, 0);
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: background 0.5s ease;
+}
+
+.layer:hover {
+    background: rgba(217, 205, 183, 0.8);
+}
+
+.layerHeading,
+.layerParagraph,
+.layerAddress {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 3s ease;
+}
+
+.layerHeading {
+    top: 30%;
+    font-weight: 600;
+    font-size: 32px;
+}
+
+.campus .campus-col .layer .layerParagraph {
+    top: 50%;
+    padding: 0 5px;
+    font-size: 20px;
+    line-height: 2;
+}
+
+.layerAddress {
+    top: 80%;
+    font-size: 18px;
+}
+
+.layer:hover .layerHeading,
+.layer:hover .layerParagraph,
+.layer:hover .layerAddress {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Facilities */
+
+.facilities {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    padding: 100px;
+}
+
+.facilities h1 {
+    font-size: 44px;
+    font-weight: 500;
+}
+
+.facilities .outerP {
+    color: #777;
+    font-weight: 300;
+    font-size: 20px;
+    padding: 10px;
+}
+
+.facilities p {
+    font-size: 15px;
+}
+
+.facilities .row {
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.facilities-col {
+    flex-basis: 31%;
+    border-radius: 10px;
+    margin-bottom: 5%;
+    text-align: left;
+}
+
+.facilities-col img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.facilities-col h3 {
+    margin-top: 16px;
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.facilities-col p {
+    padding: 0;
+}
+
+/* Testimonials */
+
+.testimonials {
+    width: 80%;
+    margin: auto;
+    padding-top: 100px;
+    text-align: center;
+}
+
+.testimonials h1 {
+    font-size: 44px;
+    font-weight: 500;
+}
+
+.testimonials .outerP {
+    color: #777;
+    font-weight: 300;
+    font-size: 20px;
+    padding: 10px;
+}
+
+.testimonials-col {
+    flex-basis: 44%;
+    border-radius: 10px;
+    margin-top: 30px;
+    margin-bottom: 5%;
+    text-align: left;
+    background: rgb(170, 50, 49);
+    padding: 25px;
+    cursor: pointer;
+    display: flex;
+}
+
+.testimonials-col img {
+    height: 100px;
+    margin-left: 5px;
+    margin-right: 30px;
+    border-radius: 50%;
+
+}
+
+.testimonials-col p {
+    margin-top: 5px;
+    text-align: left;
+    font-size: 16px;
+    color: #fff;
+}
+
+.testimonials-col h3 {
+    padding: 0;
+    color: #fff;
+}
+
+.star {
+    color: yellow;
+    font-size: 30px;
+}
+
+/* Call To Action Section */
+
+.cta {
+    margin: 100px auto;
+    width: 80%;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+        url(Images/banner2.jpg);
+    background-position: center;
+    background-color: cover;
+    text-align: center;
+    padding: 100px 0;
+}
+
+.cta h1 {
+    font-size: 32px;
+    font-weight: 500;
+    color: #fff;
+    margin-bottom: 40px;
+    padding: 0;
+}
+
+.white-btn {
+    background-color: white;
+}
+
+/* Footer */
+
+.footer {
+    width: 100%;
+    text-align: center;
+    padding: 30px 0;
+}
+
+.footer h1 {
+    margin-bottom: 25px;
+    margin-top: 20px;
+    font-weight: 600;
+}
+
+.footer .footer-paragraph {
+    padding: 0 100px;
+    line-height: 2.2;
+}
+
+.icons .logo {
+    color: #f44366;
+    margin: 0 13px;
+    cursor: pointer;
+    padding: 18px;
+    width: 30px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+
+    .sidebar ul {
+        font-size: 11px;
+    }
+    
+    .card {
+        width: calc(100% - 15px);
+        margin-bottom: 15px;
+        height: auto;
+    }
+
+    .card-slider {
+        padding: 10px;
+    }
+
+    .prev,
+    .next {
+        font-size: 16px;
+        padding: 8px 12px;
+    }
+
+    .layer h3 {
+        margin: -65px 0;
+        font-size: 20px;
+    }
+
+    .campus .campus-col .layer .layerParagraph {
+        margin: -90px 0;
+        font-size: 14px;
+    }
+
+    .layer address {
+        font-size: 14px;
+    }
+    
+    .middlerow {
+        flex-direction: column;
+    }
+
+    .facilities .row {
+        margin: 0 -100px;
+        flex-direction: column;
+    }
+    
+    .footer p {
+        margin: 0 5px;
+    }
+}
+
+/* Responsive navbar for small screens */
+@media (max-width: 800px) {
+    .menuToggle {
+        display: block;
+        font-size: 2em;
+        cursor: pointer;
+    }
+
+    header ul {
+        display: none;
+    }
+
+    .card {
+        width: calc(100% - 20px);
+        margin-bottom: 20px;
+    }
+
+    .layer h3 {
+        margin: -65px 0;
+        font-size: 20px;
+    }
+
+    .campus .campus-col .layer .layerHeading {
+        font-size: 90%;
+    }
+
+
+    .campus .campus-col .layer .layerParagraph {
+        margin: -60px 0;
+        font-size: 70%;
+    }
+
+    .campus .campus-col .layer .layerAddress {
+        font-size: 70%;
+    }
+
+    .layer address {
+        font-size: 20px;
+    }
+
+    .middlerow {
+        flex-direction: column;
+    }
+
+    .facilities .row {
+        margin: 0 -100px;
+        flex-direction: column;
+    }
+}

@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="css/Student Portal Design.css">
+    <script src="js/Student View.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <title>School Information System - Student</title>
+    <style>
+        .feedback-heading {font-size: 2rem;}
+        .line {border-top: 0.1px solid black; margin: 40px 0;}
+        .radio-group {display: flex; gap: 100px; align-items: center; margin: 10px 0 20px;}
+        .feedback-radio {margin-right: 3px;}
+        #feedback-textarea {width: 60%; height: 200px; box-sizing: border-box; resize: none; background-color: #f8f8f8; border: 2px solid #ccc; font-size: 16px; margin: 5px 0 10px;}
+        .modal-container {background: rgba(0, 0, 0, 0.5); position: fixed; top: 0; left: 0; height: 100vh; width: 100vw; display: flex; justify-content: center; align-items: center; z-index: 9999;}
+        .modal {background: rgb(195, 185, 177); padding: 20px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); max-width: 600px; width: 90%; max-height: 95vh; overflow-y: auto;}
+        .modal-header {text-align: center; background: rgb(170, 50, 49); color: #fff; padding: 10px; border-radius: 10px 10px 0 0;}
+        .profile-table {width: 100%; border-spacing: 10px;}
+        .profile-table td {vertical-align: top; padding: 5px;}
+        .profile-table td:first-child {font-weight: bold; width: 40%;}
+        .modal-footer {text-align: center; margin-top: 20px;}
+        button.close {padding: 10px 20px; background: rgb(170, 50, 49); color: white; border: none; border-radius: 5px; cursor: pointer;}
+        button.close:hover {background: rgb(103, 24, 30);}
+        .intake-results h2 {margin: 0 15px; padding: 10px; background: rgb(195, 185, 177); border-top-left-radius: 5px; border-top-right-radius: 5px;}
+        .intake-results .student-container {margin: 0 1.5rem 2rem; padding: 1rem;}
+        .intake-results .s-box {border-radius: .5rem; background-color: #b6a89d; padding: 16px 8px;}
+        .intake-results table {margin: 0 15px; padding: 10px; border: 1px solid #888; border-collapse: collapse; width: 97.9%; overflow: hidden;}
+        .intake-results th td {padding: 12px 15px; text-align: center;}
+        .intake-results td {text-align: center;}
+        .intake-results tr td a {background-color: #d9cdb7; text-decoration: none; color: #000; border-radius: 2px; padding: .5rem;}
+        .intake-results tr td a:hover {background-color: antiquewhite;}
+        @media (max-width:768px) {#feedback-textarea {width: 100%;}.intake-results table{width: 92.7%;}.intake-results tr th, td {display: block; width: 100%;}}
+        @media (max-width:480px) {#feedback-textarea {width: 90%;}}
+    </style>
+</head>
+
+<body id="top">
+    <!--Header-->
+    <section class="header">
+        <div class="flex">
+            <a href="index.html" class="logo"><img src="Images/Logo-s.png"></a>
+            
+            <div class="icons">
+                <i id="menu-btn" class='bx bx-menu'></i>
+                <i id="user-btn" class='bx bx-user'></i>
+                <i id="toggle-btn" class='bx bx-sun'></i>
+            </div>
+
+            <div class="profile">
+                <img src="Images/Mario Kart.png">
+                <h3>Thosmas Edison</h3>
+                <span>Student</span>
+                <a href="index.html" class="btn">Logout</a>
+            </div>
+        </div>
+    </section>
+
+    <!--Sidebar-->
+    <section class="side-bar">
+        <div class="close-side-bar">
+            <i class='bx bx-x'></i>
+        </div>
+
+        <div class="profile-section">
+            <h1>Welcome Back,</h1>
+            <img src="Images/Mario Kart.png">
+            <h2>Thomas Edison</h2>
+            <span>Student</span>
+        </div>
+
+        <nav class="navbar">
+            <a href="#top"><i class='bx bxs-dashboard'></i><span>Dashboard Overview</span></a>
+            <a href="#studProfile" onclick="openModal()"><i class='bx bxs-user'></i><span>Student Profile</span></a>
+            <a href="#timetable"><i class='bx bxs-calendar'></i><span>Timetable</span></a>
+            <a href="#intake-results"><i class='bx bxs-report'></i><span>Student Results</span></a>
+            <a href="#feedbacks"><i class='bx bxs-spreadsheet'></i><span>Feedback</span></a>
+        </nav>
+    </section>
+
+    <!--Quick Select Section-->
+    <section class="quick-select">
+
+        <h1 class="heading-1">Quick Options</h1>
+
+        <div class="box-container">
+
+            <div class="box">
+                <h3 class="title">Student Profile</h3>
+                <p>Check Student Intake Profile</p>
+                <button type="button" class="inline-btn" onclick="openModal()">View Student Profile</button>
+            </div>
+
+            <div class="box">
+                <h3 class="title">Timetable</h3>
+                <p>Student/Lecturer Timetable</p>
+                <a href="#timetable" class="inline-btn">View Timetable</a>
+            </div>
+
+            <div class="box">
+                <h3 class="title">Student Result</h3>
+                <p>All Results</p>
+                <a href="#intake-results" class="inline-btn">View Result</a>
+            </div>
+
+            <div class="box">
+                <h3 class="title">Feedback</h3>
+                <p>Comments & Complains</p>
+                <a href="#feedbacks" class="inline-btn">Submit Feedbacks</a>
+            </div>
+        </div>
+    </section>
+
+    <!--Student Profile Modal-->
+    <div id="modal-container" class="modal-container" style="display: none;">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>Student Profile Details</h2>
+            </div>
+            <div class="modal-content">
+                <form action="#">
+                    <table class="profile-table">
+                        <!-- Student Details -->
+                        <tr>
+                            <td><label for="studentFullName">Student Full Name:</label></td>
+                            <td><span>Thomas Alva Edison</span></td>
+                        </tr>
+                        <tr>
+                            <td><label for="fatherFullName">Father's Full Name:</label></td>
+                            <td><span>Samuel Ogden Edison, Jr</span></td>
+                        </tr>
+                        <tr>
+                            <td><label for="motherFullName">Mother's Full Name:</label></td>
+                            <td><span>Nancy Matthews Elliott</span></td>
+                        </tr>
+                        <tr>
+                            <td><label for="email">Email:</label></td>
+                            <td><span>OHHHPOWERRR666@gmail.com</span></td>
+                        </tr>
+                        <tr>
+                            <td><label for="phone">Phone Number:</label></td>
+                            <td><span>012-345 6789</span></td>
+                        </tr>
+                        <tr>
+                            <td><label for="birthDate">Birth Date:</label></td>
+                            <td><span>11/2/2000</span></td>
+                        </tr>
+                        <tr>
+                            <td><label for="gender">Gender:</label></td>
+                            <td><span>Male</span></td>
+                        </tr>
+                        <tr>
+                            <td><label for="address">Address:</label></td>
+                            <td>
+                                <span>No. 44, Jalan Desa Melur 4/1, Taman Bandar Connaught, 56000 Cheras, Kuala Lumpur, Malaysia.</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label for="education">Education Level:</label></td>
+                            <td><span>Tertiary</span></td>
+                        </tr>
+                        <!-- Current Course -->
+                        <tr>
+                            <td><label for="course">Course:</label></td>
+                            <td><span>Computer Science</span></td>
+                        </tr>
+                        <tr>
+                            <td><label for="intakeStart">Start of Intake Date:</label></td>
+                            <td><span>15/05/2024</span></td>
+                        </tr>
+                        <tr>
+                            <td><label for="intakeEnd">End of Intake Date:</label></td>
+                            <td><span>15/05/2026</span></td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="close" onclick="closeModal()">Close Details</button>
+            </div>
+        </div>
+    </div>
+
+    <!--Timetables-->
+    <section class="timetable" id="timetable">
+
+        <h1 class="heading">Timetables</h1>
+        <p>* Timetable will temporary be updated weekly</p>
+
+        <div class="box-container">
+
+            <div class="box">
+                <h3>Student Timetable</h3>
+                <table>
+                    <tr>
+                        <td>D/T</td>
+                        <td>Morning : 8 AM-12 PM</td>
+                        <td>Afternoon : 12 PM-5 PM</td>
+                        <td>Evening : 5 PM-9 PM</td>
+                    </tr>
+                    <tr>
+                        <td>Sunday</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>Monday</td>
+                        <td>English</td>
+                        <td>Maths</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>Tuesday</td>
+                        <td>NA-T01</td>
+                        <td>CS-T01</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>Wednesday</td>
+                        <td>IT-P01</td>
+                        <td>CS-P01</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>Thursday</td>
+                        <td>-</td>
+                        <td>Add Maths</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>Friday</td>
+                        <td>Soft Skills</td>
+                        <td>-</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>Saturday</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!--Results-->
+
+    <!--Grade Point Average (GPA)-->
+
+
+    <section class="intake-results" id="intake-results">
+
+        <h1 class="heading">Student Results</h1>
+
+        <!-- Semester Selection -->
+        <div class="student-container">
+            <div class="s-box">
+                <table>
+                    <thead>
+                        <tr>
+                            <h2>Semester</h2>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>Programme</th>
+                            <th>Semester</th>
+                            <th>Number Of Courses</th>
+                            <th>Total Weightage</th>
+                            <th>GPA</th>
+                            <th>Semester Status</th>
+                            <th>Check Semester Transcript</th>
+                        </tr>
+                        <tr>
+                            <td>BCHCS</td>
+                            <td>2024-05</td>
+                            <td>3</td>
+                            <td>9</td>
+                            <td>3.97</td>
+                            <td>Active</td>
+                            <td><a href="Student Result (Student).html">Check</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!--Feedbacks-->
+    <section class="feedbacks" id="feedbacks">
+
+        <h1 class="heading">Feedbacks</h1>
+
+        <div class="box-container">
+
+            <form action="#" class="feedback-form">
+                <h2 class="feedback-heading">Feedback Form</h2>
+                <p>We would love to hear your thoughts, suggestions, concerns or problem with anything so we can
+                    improve!</p>
+                <hr class="line">
+                <h2>Feedback Type</h2>
+                <div class="radio-group">
+                    <label><input type="radio" class="feedback-radio" name="feedback-type">Comments</label>
+                    <label><input type="radio" class="feedback-radio" name="feedback-type">Suggestions</label>
+                    <label><input type="radio" class="feedback-radio" name="feedback-type">Questions</label>
+                </div>
+                <legend>Describe Your Feedback: </legend>
+                <textarea name="feedback-textarea" id="feedback-textarea"></textarea>
+                <br>
+                <button class="inline-btn">Submit</button>
+            </form>
+        </div>
+    </section>
+
+    <!--Footer-->
+    <footer class="footer">
+        Copyright &copy; 2024 - Pinnacle Academy | All Rights Reserved.
+    </footer>
+
+    <script>
+        function myfunction() {
+            var element = document.body;
+            element.dataset.bsTheme = 
+                element.dataset.bsTheme == "light" ? "dark" : "light";
+        }
+    </script>
+</body>
+
+</html>
